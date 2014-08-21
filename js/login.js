@@ -31,11 +31,12 @@ jQuery(document).ready(function($) {
 	   Parse.User.logIn(uName, pWord, {
 		   
 		   success: function(user) {
-			   console.log("You have logged in")
+			   console.log("You have logged in");
+			   window.location.href="admin.html";
 			   },
 			   
 			   error: function(user, error) {
-				   console.log("Fail "+error.code+" "+error.message)
+				   console.log("Fail "+error.code+" "+error.message);
 				   }
 		});
 	});
@@ -75,6 +76,7 @@ jQuery(document).ready(function($) {
 						user.signUp(null, {
 							success: function(user) {
 								console.log("Registered");
+								window.location.href="admin.html";
 								},
 							error: function(user, error) {
 								// Show the error message somewhere and let the user try again.
