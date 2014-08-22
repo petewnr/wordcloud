@@ -4,6 +4,10 @@ jQuery(document).ready(function($) {
     		
 var questions_list = [];
 var event_questions = [];
+
+$('#event_code_error').hide();
+$('#response_entry').hide();
+$('#event_closed').hide();
     		
 
 $("#validate_event").click(function(e){
@@ -23,6 +27,8 @@ $("#validate_event").click(function(e){
 		success: function(foundevent) {
 			
 			if (foundevent.length !== 1) {
+				$('#welcome').hide();
+				$('#event_code_error').show();
 				console.log("Error: duplicate event codes");
 			} else {
 				var event_code = foundevent[0].get("event_code");
@@ -33,8 +39,19 @@ $("#validate_event").click(function(e){
 				console.log("ID is "+event_id+" "+coord);
 				
 				if (status == "closed") {
+					$('#welcome').hide();
+					$('#event_code_button').hide();
+					$('#response_entry').hide();
+					$('#event_closed').show();
 					console.log("This event is closed");
+					setTimeout(function(){
+						location.reload();
+					}, 5000)
 				} else {
+					$('#welcome').hide();
+					$('#event_code_button').hide();
+					$('#response_entry').show();
+					$('#event_closed').hide();
 					$('.event_id').append(event_code);
 					$('.event_coord').append(coord);
 					console.log("getting questions now for "+event_id);

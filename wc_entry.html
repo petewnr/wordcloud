@@ -40,13 +40,13 @@
 						<p>say something</p>
 						<p>remain completely anonymous</p>
 		    		</div> <!-- /welcome -->
-		    		<div id="event_code_error">
-		    			<h1><span class="glyphicon glyphicon-question-sign red"></span></h1>
+		    		<div id="event_code_error" class="alert alert-warning">
+		    			<h1><span class="glyphicon glyphicon-question-sign yellow"></span></h1>
 		    			<p>we've had a problem with that event code</p>
 		    			<p>please check the code and try again</p>
 		    		</div>
 					<div class="row">
-						<div class="col-md-4 col-md-offset-4">
+						<div class="col-md-4 col-md-offset-4" id="event_code_button">
 							<input id="event_code" type="text" class="form-control" placeholder="event code goes here" required autofocus>
 							<button id="validate_event" class="btn btn-sm btn-warning" type="submit">get into it</button>
 						</div>
@@ -58,10 +58,10 @@
 		
 		
 		<div class="row" id="response_entry"> <!-- response entry -->
-			<div class="col-md-4 col-md-offset-4"> 
+			<div class="col-md-4 col-md-offset-4 alert alert-success"> 
 				<p class="response_entry_head">you're into event <span class="event_id"></span></p>
 				<p class="response_entry_head">managed by <span class="event_coord"></span></p>
-				<h3><span class="glyphicon glyphicon-star-empty yellow"></span></h3>
+				<h3><span class="glyphicon glyphicon-star-empty"></span></h3>
 				<p class="response_entry_head">select a question</p>
 				<div class="dropdown theme-dropdown clearfix">
 					<select id="question_selector">
@@ -69,12 +69,18 @@
 				</div> <!-- dropdown question selector -->
 				<textarea name="text" id="response_box" placeholder="add your comments here"></textarea>
 				<br>
-				<button id="response_send" class="btn btn-sm btn-warning" type="submit">put it out there</button>
+				<button id="response_send" class="btn btn-sm btn-success" type="submit">put it out there</button>
 			
 			</div> <!-- /col -->
 		</div> <!-- /response entry -->
 		
-		
+		<div class="row" id="event_closed">
+			<div class="col-md-4 col-md-offset-4 alert alert-danger">
+				<p class="event_closed">event <span class="event_id"></span> is closed</p>
+				<h1><span class="glyphicon glyphicon-minus-sign"></span></h1>
+				<p class="event_closed"> refresh to try again</p>
+			</div>
+		</div>
 		
 		<!--
 		    	<div>

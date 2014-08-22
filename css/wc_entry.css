@@ -1,3 +1,7 @@
+h1 {
+	text-align: center;
+}
+
 h3 {
 	text-align: center;
 }
@@ -46,4 +50,8 @@ input[type="text"], textarea {
 
 option:hover {
 	background-color: #eea236;
+}
+
+.event_closed {
+	text-align: center;
 }
