@@ -9,115 +9,100 @@
   
   <link rel="stylesheet" href="css/reset.css">
   <link href="css/bootstrap.min.css" rel="stylesheet">
-  <link rel="shortcut icon" href="../../assets/ico/favicon.ico">
+
+  <!-- Custom styles for this template -->
+  <link href="css/wc_entry.css" rel="stylesheet">
   
   <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <script type="text/javascript" src="http://www.parsecdn.com/js/parse-1.2.18.min.js"></script>
+
 </head>
 
-<body>
-  <div class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-      <div class="container">
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="#">Word Cloud Generator</a>
-        </div>
-        <div class="collapse navbar-collapse">
-          <ul class="nav navbar-nav">
-            <li class="active"><a href="#">Home</a></li>
-            <li><a href="#about">About</a></li>
-            <li><a href="#contact">Contact</a></li>
-          </ul>
-        </div><!--/.nav-collapse -->
-      </div>
-    </div>
+<body role="document">
+    
+    <!-- Main Content -->
 
-	<div class="container">
-	  <div id="main">
-	    <p><br><br><br></p>
-	    <p>Please select the question that you are responding to, enter your response and click submit.</p>
+	<div class="container"> <!-- container 1 -->
 	
-	
-	  </div>
-	  <div id="text_entry_input">
-	  	<p><input type="radio" id="Q_1" name="days" value="Question 1"> Question 1<br>
-		  	<input type="radio" id="Q_2" name="days" value="Question 2"> Question 2<br>
-		  	<input type="radio" id="Q_3" name="days" value="Question 3"> Question 3<br>
-		  	<input type="radio" id="Q_4" name="days" value="Question 4"> Question 4<br>
-		  	</p>
-	  	<form id="submit_text">
-	  	<p>
-		  	<textarea name="text" id="textentry" rows="3" cols="50"></textarea>
-		</p>
-		<p>
-			<input type="submit" value="Post your response">
-		</p>
-	 </form>
-	</div>
+		<div class="row" id="main"> <!-- header -->
+			<div class="col-md-8 col-md-offset-2"> 
+		    	<div> 
+					<h3>Active WordCloud</h3>
+		    	</div>
+			</div> <!-- /colmd8 -->
+		</div> <!-- /row -->
+		
+		<div class="row" id="event_code_entry"> <!-- code entry -->
+			<div class="col-md-4 col-md-offset-4"> 
+		    	<div>
+		    		<div id="welcome">
+						<h1><span class="glyphicon glyphicon-star-empty yellow"></span></h1>
+						<p>say something</p>
+						<p>remain completely anonymous</p>
+		    		</div> <!-- /welcome -->
+		    		<div id="event_code_error">
+		    			<h1><span class="glyphicon glyphicon-question-sign red"></span></h1>
+		    			<p>we've had a problem with that event code</p>
+		    			<p>please check the code and try again</p>
+		    		</div>
+					<div class="row">
+						<div class="col-md-4 col-md-offset-4">
+							<input id="event_code" type="text" class="form-control" placeholder="event code goes here" required autofocus>
+							<button id="validate_event" class="btn btn-sm btn-warning" type="submit">get into it</button>
+						</div>
+					</div>
+					<br>
+		    	</div>
+			</div> <!-- /colmd8 -->
+		</div> <!-- /row -->
+		
+		
+		<div class="row" id="response_entry"> <!-- response entry -->
+			<div class="col-md-4 col-md-offset-4"> 
+				<p class="response_entry_head">you're into event <span class="event_id"></span></p>
+				<p class="response_entry_head">managed by <span class="event_coord"></span></p>
+				<h3><span class="glyphicon glyphicon-star-empty yellow"></span></h3>
+				<p class="response_entry_head">select a question</p>
+				<div class="dropdown theme-dropdown clearfix">
+					<select id="question_selector">
+					</select>
+				</div> <!-- dropdown question selector -->
+				<textarea name="text" id="response_box" placeholder="add your comments here"></textarea>
+				<br>
+				<button id="response_send" class="btn btn-sm btn-warning" type="submit">put it out there</button>
+			
+			</div> <!-- /col -->
+		</div> <!-- /response entry -->
+		
+		
+		
+		<!--
+		    	<div>
+					<p>Please select the question that you are responding to, enter your response and click submit.</p>
+				</div>
+		  
+				<div id="text_entry_input">
+					<p>
+						<input type="radio" id="Q_1" name="days" value="Question 1"> Question 1<br>
+						<input type="radio" id="Q_2" name="days" value="Question 2"> Question 2<br>
+						<input type="radio" id="Q_3" name="days" value="Question 3"> Question 3<br>
+						<input type="radio" id="Q_4" name="days" value="Question 4"> Question 4<br>
+					</p>
+					<form id="submit_text">
+						<p>
+							<textarea name="text" id="textentry" rows="3" cols="50"></textarea>
+						</p>
+						<p>
+							<input type="submit" value="Post your response">
+						</p>
+					</form>
+				</div> 
+			</div>
+		</div> -->
+		
+	</div> <!-- /container -->
 
-  <script type="text/javascript">
-    jQuery(document).ready(function($) {
-    Parse.initialize("0fDoU3tixdDTgs3iGWxjWdsbN8EsyjE6wFwtMy7j", "CQTCCMfGXwyPbukMSAoawLCxemrcqor6urIypgCs");
-    
-    $("#submit_text").on("submit",function(e){
-    e.preventDefault();
-    var question_no = "";
-    
-    if (document.getElementById('Q_1').checked) {
-		var question_no = "q1";
-		};
-    
-    if (document.getElementById('Q_2').checked) {
-		var question_no = "q2";
-		};
-		
-	if (document.getElementById('Q_3').checked) {
-		var question_no = "q3";
-		};
-	
-	if (document.getElementById('Q_4').checked) {
-		var question_no = "q4";
-		};
-	
-	console.log("question selected is "+question_no);
-	
-	if (question_no == "") {
-		
-		alert("A question has not been selected.  Please select a question");
-		
-	} else {
-    
-    var ftextentry = $("#textentry").val();
-    
-    console.log(ftextentry);
-    
-    var ResponseText = Parse.Object.extend("ResponseText");
-	var responseText = new ResponseText();
-	
-	responseText.set("course", "SPMD3052");
-	responseText.set("qid", question_no);
-	responseText.set("text",ftextentry);
-	
-	responseText.save(null, {
-		success: function(responseText) {
-			console.log("New response with objectID: " + responseText.id);
-			alert("Your response has been posted");
-		},
-		error: function(responseText, error) {
-			alert("Failed to create new object, with error code: " + error.description);
-		}
-		});
-	
-	};
-	});
-	
-	});
-  </script>
+	<script type="text/javascript" src="js/wc_entry.js"></script>
 </body>
 
 </html>

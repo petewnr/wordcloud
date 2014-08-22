@@ -1,0 +1,49 @@
+h3 {
+	text-align: center;
+}
+
+#event_code_entry {
+	text-align: center;
+}
+
+#event_code {
+	margin-top: 20px;
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.yellow {
+	color: #eea236;
+}
+
+.red {
+	color: #c12e2a;
+}
+
+.response_entry_head {
+	text-align: center;
+}
+
+#response_entry {
+	text-align: center;
+}
+
+#response_box {
+	height: 200px;
+	margin-bottom: 20px;
+}
+
+input[type="text"], textarea {
+	width: 100%;
+	border: 1px solid #ccc;
+	border-radius: 4px;
+}
+
+#question_selector {
+	margin-bottom: 20px;
+	min-width: 100px;
+}
+
+option:hover {
+	background-color: #eea236;
+}
